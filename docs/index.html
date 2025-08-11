@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>LEBEDEEWW — CV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111214">
 
   <!-- Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,82 +13,51 @@
 
   <style>
     :root{
-      --bg-0:#111214; --bg-1:#1A1B1E;
-      --text:#EDEEF0; --muted:#B7BBC3;
-      --card-bg:rgba(255,255,255,.06);
-      --card-border:rgba(255,255,255,.16);
+      --bg-0:#111214; --bg-1:#181a1d;
+      --text:#ECEEF2; --muted:#AEB3BC;
+      --card:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.16);
       --shadow:0 10px 30px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
+      margin:0; padding:24px;
       font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial;
       color:var(--text);
-      background: linear-gradient(180deg,var(--bg-0),var(--bg-1));
+      background:linear-gradient(180deg,var(--bg-0),var(--bg-1));
       display:grid; place-items:center;
-      padding:24px;
     }
-
     .card{
       width:min(720px,92vw);
       padding:28px 24px 32px;
       border-radius:18px;
-      background:var(--card-bg);
-      border:1px solid var(--card-border);
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
+      background:var(--card);
+      border:1px solid var(--line);
+      backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
       box-shadow:var(--shadow);
     }
-
-    .logo{
-      margin:0 0 6px;
-      font-style:italic;
-      font-weight:700;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-    }
-    .lead{
-      margin:0 0 18px;
-      font-style:italic;
-      font-weight:300;
-      color:var(--muted);
-    }
-    .duplex{margin:0 0 14px; font-size:14px; color:var(--muted)}
-
-    /* Кнопка: мобильная — на всю ширину, крупная "тап-зона" */
+    .logo{margin:0 0 6px; font-style:italic; font-weight:700; letter-spacing:.06em; text-transform:uppercase;}
+    .lead{margin:0 0 18px; font-style:italic; font-weight:300; color:var(--muted);}
+    .duplex{margin:0 0 16px; font-size:14px; color:var(--muted);}
+    .actions{display:flex; gap:12px; flex-direction:column; align-items:stretch;}
     .btn{
-      display:block;
-      width:100%;
-      max-width:420px;
-      padding:16px 20px;
-      margin:0;
-      border-radius:14px;
-      background:#FFFFFF;
-      color:#0F1115;
-      text-align:center;
-      text-decoration:none;
-      font-style:italic;
-      font-weight:600;
-      border:1px solid rgba(15,17,21,.12);
+      display:inline-block; width:100%;
+      padding:16px 20px; border-radius:14px; text-align:center;
+      text-decoration:none; font-style:italic; font-weight:600;
+      border:1px solid rgba(15,17,21,.12); color:#0f1115; background:#fff;
       box-shadow:0 8px 22px rgba(0,0,0,.22);
-      transition:transform .08s ease, box-shadow .2s ease, background .2s ease;
+      transition:transform .08s ease, box-shadow .2s ease;
+    }
+    .btn.secondary{
+      background:transparent; color:var(--text);
+      border:1px solid var(--line); box-shadow:none;
     }
     .btn:hover{transform:translateY(-1px); box-shadow:0 12px 28px rgba(0,0,0,.28)}
     .btn:active{transform:translateY(0); box-shadow:0 6px 16px rgba(0,0,0,.2)}
-
     .meta{margin-top:14px; font-size:13px; color:var(--muted)}
-
-    /* Desktop чуть компактнее */
-    @media (min-width:768px){
-      .card{padding:32px 32px 36px}
-      .btn{display:inline-block; width:auto; min-width:260px}
-    }
-
-    /* Уважим "меньше движения" */
-    @media (prefers-reduced-motion: reduce){
-      .btn{transition:none}
-    }
+    @media (min-width:768px){ .actions{flex-direction:row; justify-content:flex-start} .btn{width:auto; min-width:220px} }
+    @media (prefers-reduced-motion:reduce){ .btn{transition:none} }
   </style>
 </head>
 <body>
@@ -96,10 +66,14 @@
     <p class="lead">High-end photography & visual production</p>
     <p class="duplex">Скачать резюме / <em>Download CV</em></p>
 
-    <!-- Файл лежит рядом: docs/CV.pdf. Меняй ?v= для сброса кэша после замены файла -->
-    <a class="btn" href="CV.pdf?v=2025-08-11" download>Download CV (PDF)</a>
+    <div class="actions">
+      <!-- На iOS Safari "download" часто открывает предпросмотр.
+           Поэтому даём две опции: Открыть (просмотр) и Скачать. -->
+      <a class="btn secondary" href="CV.pdf?v=2025-08-11" target="_blank" rel="noopener" aria-label="Open CV in browser">Open CV (Preview)</a>
+      <a class="btn" href="CV.pdf?v=2025-08-11" download aria-label="Download CV as PDF">Download CV (PDF)</a>
+    </div>
 
-    <div class="meta">Contact: iam@lebedeeww.com · EU | Dubai | CIS</div>
+    <div class="meta">Contact: iam@lebedeeww.com · EU | Dubai | CIS · Updated: 11 Aug 2025</div>
   </main>
 </body>
 </html>
